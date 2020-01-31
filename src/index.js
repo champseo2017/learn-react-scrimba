@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import MyInfo from "./components/MyInfo";
-ReactDOM.render(<MyInfo/>, document.getElementById("root"));
+import App from './App'
+
+ReactDOM.render(<App/>, document.getElementById("root"));
 
 /* 
 react function component pracitce

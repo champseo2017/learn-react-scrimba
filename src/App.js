@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Footer from "./Footer"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <div>
+       <nav>
+          <h1>Hello a third time!</h1>
+          <ul>
+              <li>Thing 1</li>
+              <li>Thing 2</li>
+              <li>Thing 3</li>
+          </ul>
+          <main>
+            <p>THis is where most of my content will go...</p>
+          </main>
+          <Footer/>
+        </nav>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+/*
+ReactDOM.render(<App/>, document.getElementById("root"));
+ReactDOM.render(<App/>->(<MyInfo/>-><div>...</div>), document.getElementById("root"))
+ReactDOM.render(<App/>->(<AwesomeFooter/>-><footer>...</footer>), document.getElementById("root"))
+ReactDOM.render(<App/>->(<AwesomeHeader/>)->(<MyNavbar/>)->(<Logo/>), document.getElementById("root"))
+
+ReactDOM.render(<App/>->(<AwesomeHeader/>-><Logo/>-><img../>), document.getElementById("root"))
+
+ReactDOM.render(<App/>->(MyNavbar)-><nav>...</nav>, document.getElementById("root"));
+
+
+
+
+
+*/
