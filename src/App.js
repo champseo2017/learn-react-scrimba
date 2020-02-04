@@ -1,27 +1,36 @@
-import React, { Children } from "react"
+import React from "react";
+import TodoItem from "./TodoItem"
+import todosData from "./todosData"
+
 class App extends React.Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
-      count: 0
+      todos: todosData
     }
-    this.hanleClick = this.hanleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  hanleClick() {
-    this.setState(prevState => {
-      return {
-        count: prevState.count + 1
-      }
-    })
+  handleChange(id) {
+      this.setState(prevState => {
+        const updatedTodos = prevState.todos.map(todo => {
+          if(todo.id === id){
+              todo.completed = !todo.completed
+          }
+          return todo // return object todo
+        })
+        return {
+          todos: updatedTodos // update array object 
+        }
+      })
   }
 
   render() {
+    const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item} handleChange={this.handleChange}/>)
+
     return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.hanleClick}>Change !</button>
-        <ChildrenComponent count={this.state.count}/>
+      <div className="todo-list">
+        {todoItems}
       </div>
     )
   }
