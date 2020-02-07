@@ -1,29 +1,26 @@
-import React, {Component} from "react";
-import Conditional from './Conditional';
+import React, { Component } from "react";
+import Conditional from "./Conditional";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      isLoading: true
-    }
+      unredMessages: ["a", "b"]
+    };
   }
-  componentDidMount() {
-    setTimeout(() => {
-        this.setState({
-          isLoading: false
-        })
-    }, 1500);
-  }
-
+  // &&
+  // false && false
+  // true && false
+  // true && true
   render() {
     return (
       <div>
-        {this.state.isLoading ? <h1>Loading...</h1>:<Conditional/>}
-        {/* <Conditional isLoading={this.state.isLoading}/> */}
+        {this.state.unredMessages.length > 0 && (
+          <h2>You have {this.state.unredMessages.length} unread messages!</h2>
+        )}
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
