@@ -1,36 +1,31 @@
-import React from "react";
-import TodoItem from "./TodoItem";
-import todosData from "./todosData";
-
-class App extends React.Component {
+import React, { Component } from "react";
+// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      todos: todosData
-    }
-    this.handleChange = this.handleChange.bind(this)
+      loading: false,
+      character: {}
+    };
   }
-  handleChange(id){
-    this.setState(prevState => {
-      const updatedTodos = prevState.todos.map(todo => {
-        if(todo.id === id){
-            todo.completed = !todo.completed
-        }
-        return todo
-      })
-      return {
-        todos: updatedTodos
-      }
-    })
+  componentDidMount() {
+    this.setState({ loading: true });
+    fetch("https://swapi.co/api/people/1")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          loading:false,
+          character: data
+        });
+      });
   }
-
   render() {
-    const todoItems = this.state.todos.map (item => <TodoItem key={item.id} item={item} handleChange={this.handleChange}/>)
+    const text = this.state.loading ? "loading..." : this.state.character.name;
     return (
-      <div className="todo-list">
-        {todoItems}
+      <div>
+        <p>{text}</p>
       </div>
-    )
+    );
   }
 }
 
