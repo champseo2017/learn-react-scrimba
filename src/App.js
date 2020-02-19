@@ -1,47 +1,26 @@
-/* 
- componentDidMount
- componentDidUpdate
- componentWillUnmount
-*/
-// Side effects?
-// Network request
-// Manual DOM manipulatton
-// Event listeners or timeouts and intervals
-
 import React, { useState, useEffect } from "react";
 import randomcolor from "randomcolor";
 function App() {
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState(""); // componentDidMount | initial state | value default
-  function increment() {
-    setCount(prevCount => prevCount + 1);
-  }
-  function decrement() {
-    setCount(prevCount => prevCount - 1);
-  }
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-      setColor(randomcolor())
-  },[count]); // [count, otherVars]
-  // state change component render (run function)
+    var countnum = 0;
+    const intervalId = setInterval(() => {
+      countnum++;
+      setCount(prevCount => prevCount + 1);
+      if (countnum === 5) {
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  }, []);
 
-  /* useEffect
-  useEffect({}) state change component render (run function) (componentDidUpdate)
-  componentDidUpdate (state change run useEffect) -> componentDidMount(DidMount ->state -> dom)
-  componentWillUnmount
-
-  2. Didmount only (componentDidMount)
   useEffect(() => {
-    setColor(randomcolor())
-  },[])
-  componentWillUnmount
-  */
-  
+    setColor(randomcolor());
+  }, [count]);
   return (
     <div>
-        <h1 style={{color: color}}>{count}</h1>
-        <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Decrement</button>
+      <h1 style={{ color: color }}>{count}</h1>
     </div>
   );
 }
