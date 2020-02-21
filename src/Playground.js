@@ -7,7 +7,7 @@ export default function Playground() {
     setColor(randomColor());
   }, [count]);
   return (
-    <button style={{ background: `10px solid ${color}` }}>
+    <div style={{ background: `10px solid ${color}` }}>
       {count}
       <button onClick={() => setCount(currentCount => currentCount - 1)}>
         -
@@ -15,6 +15,6 @@ export default function Playground() {
       <button onClick={() => setCount(currentCount => currentCount + 1)}>
         +
       </button>
-    </button>
+    </div>
   );
 }

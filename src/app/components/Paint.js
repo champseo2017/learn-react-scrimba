@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import Name from './Name'
 import ColorPicker from './ColorPicker'
 import randomColor from 'randomcolor'
+import WindowSize from './WindowSize'
+import Canvas from './Canvas'
 export default function Paint() {
   const [colors, setColors] = useState([])
   const [activeColor, setActiveColor] = useState('')
@@ -16,6 +18,7 @@ export default function Paint() {
   }
   useEffect(getColors, []) // call function 
   return (
+    <div>
     <header style={{borderTop: `10px solid ${activeColor}`}}>
       <div className="app">
           <Name/>
@@ -28,5 +31,13 @@ export default function Paint() {
           />
       </div>
     </header>
+    {activeColor && (
+      <Canvas
+        color={activeColor}
+        height={window.innerHeight}
+      />
+    )}
+    <WindowSize/>
+    </div>
   )
 }
