@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 import ReactDOM from 'react-dom'
-import App from "./App"
-import Playground from "./Playground"
-import Paint from "./components/Paint"
-ReactDOM.render(<Playground/>, document.getElementById('root'));
+import App from './app/index'
+import Playground from './Playground'
+import "./index.css"
+ReactDOM.render(<App/>, document.getElementById('root'));
