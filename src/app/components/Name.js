@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import useWindowSize from './WindowSize';
  const Name = React.memo(()=>{
   console.log('rendered');
+  const [windowWidth, windowHeight] = useWindowSize()
   const [name, setName] = useState('')
   return (
     <label className="header-name">
